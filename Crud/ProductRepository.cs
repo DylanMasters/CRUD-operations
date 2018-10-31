@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 
 namespace Crud
@@ -43,7 +41,7 @@ namespace Crud
                 conn.Open();
 
                 MySqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = "SELECT ProductID, Name, Price FROM products;";
+                cmd.CommandText = "SELECT ProductID, Name, Price, CategoryID FROM products;";
 
                 MySqlDataReader dataReader = cmd.ExecuteReader();
 
@@ -51,18 +49,16 @@ namespace Crud
                 {
                     Product product = new Product()
                     {
-
                         ProductID = (int)dataReader["ProductID"],
                         Name = dataReader["Name"].ToString(),
-                        Price = (decimal)dataReader["Price"]
+                        Price = (decimal)dataReader["Price"],
+                        CategoryID = (int)dataReader["CategoryID"]
                     };
 
                     products.Add(product);
                 }
                 return products;
             }
-
-
         }
 
         public void UpdateProduct(Product prod)
