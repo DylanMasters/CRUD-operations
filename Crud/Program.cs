@@ -11,16 +11,16 @@ namespace Crud
         static void Main(string[] args)
         {
 #if DEBUG
-            string jsonText = File.ReadAllText("appsetting.development.json");
+            string jsonText = File.ReadAllText("appsettings.development.json");
 #else
-            string jsonText = File.ReadAllText("appsetting.release.json");
+            string jsonText = File.ReadAllText("appsettings.release.json");
 #endif
             var connString = JObject.Parse(jsonText)["ConnectionStrings"]["DefaultConnection"].ToString();
             var prod = new ProductRepository(connString);
 
 
 
-            ProductRepository repo = new ProductRepository();
+            ProductRepository repo = new ProductRepository(connString);
 
             Console.WriteLine("please choose one of the following");
             Console.WriteLine("1) View a product");
