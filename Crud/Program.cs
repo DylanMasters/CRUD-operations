@@ -18,6 +18,11 @@ namespace Crud
             var connString = JObject.Parse(jsonText)["ConnectionStrings"]["DefaultConnection"].ToString();
             var prod = new ProductRepository(connString);
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 90801614f564dff0884789f4ea19f9fd00bca894
             ProductRepository repo = new ProductRepository(connString);
 
             Console.WriteLine("please choose one of the following");
